@@ -1,7 +1,7 @@
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Button, Text, View } from "react-native";
+import { Button, Text, View, SafeAreaView, Platform } from "react-native";
 import HomeScreen from "./components/home";
 import ProfileScreen from "./components/quiz";
 import LinearGradient from 'react-native-linear-gradient';
@@ -9,10 +9,13 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
+    <SafeAreaView style={{ flex: 1 }}>
+      <View style={{ flex: 1, paddingTop: Platform.OS === 'android' ? 20 : 0}}>
     <NavigationContainer>
       <Stack.Navigator
       screenOptions={{
-        headerTitleAlign: 'center',
+        // headerTitleAlign: 'center',
+        headerShown: false,
       }}>
         <Stack.Screen
           name="Home"
@@ -27,11 +30,11 @@ const App = () => {
               />
             ),
             headerTitleAlign: 'center',
-            headerStyle: {
-              backgroundColor: '#7b7b7b',
-              borderBottomWidth: 2,
-              borderBottomColor: '#5c5c5c'
-            },
+            // headerStyle: {
+            //   backgroundColor: '#7b7b7b',
+            //   borderBottomWidth: 2,
+            //   borderBottomColor: '#5c5c5c'
+            // },
             headerTitleStyle: {
               fontFamily: 'serif',
               fontWeight: 'bold',
@@ -66,6 +69,8 @@ const App = () => {
         />
       </Stack.Navigator>
     </NavigationContainer>
+    </View>
+    </SafeAreaView>
   );
 };
 
