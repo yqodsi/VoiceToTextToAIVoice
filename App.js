@@ -3,14 +3,14 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Button, Text, View, SafeAreaView, Platform } from "react-native";
 import HomeScreen from "./components/home";
-import ProfileScreen from "./components/quiz";
 import LinearGradient from 'react-native-linear-gradient';
+import Quiz from "./components/quiz";
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <View style={{ flex: 1, paddingTop: Platform.OS === 'android' ? 20 : 0}}>
+      <View style={{ flex: 1, paddingTop: Platform.OS === 'android' ? 30 : 0}}>
     <NavigationContainer>
       <Stack.Navigator
       screenOptions={{
@@ -47,7 +47,7 @@ const App = () => {
             headerTintColor: '#fff'
           }}
         />
-        <Stack.Screen name="Profile" component={ProfileScreen} 
+        <Stack.Screen name="Profile" component={Quiz} 
          options={{
             title: "My Profile",
             headerStyle: {
